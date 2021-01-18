@@ -8,21 +8,21 @@ public class CalculatorTest {
         int action;
 
         do {
-            System.out.println("Арабские или Римские числа ?");
-            String choose = readClass.redNextString ();
-            if (choose.equals("Римские")) {
-                System.out.print("Введите превое число: ");
-                String a = readClass.redNextString();
-                System.out.print("Введите второе число: ");
-                String b = readClass.redNextString();
+            System.out.print("Введите первое число: ");
+            String a = readClass.redNextString();
+            System.out.print("Введите второе число: ");
+            String b =  readClass.redNextString();
+            try {
+                one = Double.parseDouble(a);
+                two = Double.parseDouble(b);
+            }
+            catch(NumberFormatException exception) {
                 one = Convert.romanToDecimal(a);
                 two = Convert.romanToDecimal(b);
-            }
-            else {
-                System.out.print("Введите первое число: ");
-                one = readClass.readNextDouble();
-                System.out.print("Введите второе число: ");
-                two = readClass.readNextDouble();
+                if(one==0||two==0){
+                    System.out.print("Введите целые арабские или римские числа");
+                    break;
+                }
             }
             Calculator calculator = new Calculator(one, two);
 
